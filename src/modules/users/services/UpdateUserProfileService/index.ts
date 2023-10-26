@@ -10,11 +10,7 @@ interface IRequest {
   user_id: string;
   name: string;
   email: string;
-  birthdate: Date;
-  cellphone_number: string;
-  address_city: string;
-  address_uf: string;
-  profession: string;
+  cellphone_number?: string;
   password?: string;
   old_password?: string;
 }
@@ -33,11 +29,7 @@ class UpdateUserService {
     user_id,
     name,
     email,
-    address_city,
-    address_uf,
-    birthdate,
     cellphone_number,
-    profession,
     password,
     old_password,
   }: IRequest): Promise<User> {
@@ -72,11 +64,7 @@ class UpdateUserService {
 
     user.name = name;
     user.email = email;
-    user.address_city = address_city;
-    user.address_uf = address_uf;
-    user.birthdate = birthdate;
     user.cellphone_number = cellphone_number;
-    user.profession = profession;
 
     await this.usersRepository.save(user);
 

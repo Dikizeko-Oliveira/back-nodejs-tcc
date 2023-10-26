@@ -4,7 +4,7 @@ export class CreateContacts1632504918995 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'contacts',
+        name: 'pets',
         columns: [
           {
             name: 'id',
@@ -19,39 +19,9 @@ export class CreateContacts1632504918995 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'email',
+            name: 'content',
             type: 'varchar',
             isNullable: true,
-          },
-          {
-            name: 'telephone',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'document',
-            type: 'varchar',
-            isNullable: false,
-          },
-          {
-            name: 'bank',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'bank_account',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'bank_iban',
-            type: 'varchar',
-            isNullable: false,
-          },
-          {
-            name: 'fk_user_id',
-            type: 'uuid',
-            isNullable: false,
           },
           {
             name: 'created_at',
@@ -69,6 +39,6 @@ export class CreateContacts1632504918995 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('contacts');
+    await queryRunner.dropTable('pets');
   }
 }

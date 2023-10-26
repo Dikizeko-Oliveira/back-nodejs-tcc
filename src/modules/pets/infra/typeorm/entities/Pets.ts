@@ -6,8 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('contacts')
-class Contacts {
+@Entity('pets')
+class Pets {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
@@ -15,25 +15,7 @@ class Contacts {
   name!: string;
 
   @Column()
-  email!: string;
-
-  @Column()
-  telephone!: string;
-
-  @Column()
-  document!: string;
-
-  @Column()
-  bank!: string;
-
-  @Column()
-  fk_user_id!: string;
-
-  @Column()
-  bank_account!: string;
-
-  @Column()
-  bank_iban!: string;
+  content!: string;
 
   @CreateDateColumn()
   created_at!: Date;
@@ -42,4 +24,4 @@ class Contacts {
   updated_at!: Date;
 }
 
-export default Contacts;
+export default Pets;

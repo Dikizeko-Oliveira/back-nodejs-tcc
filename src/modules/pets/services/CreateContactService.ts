@@ -1,13 +1,11 @@
 import { injectable, inject } from 'tsyringe';
 
-import Contact from '../infra/typeorm/entities/Contact';
+import Contact from '../infra/typeorm/entities/Pets';
 import IContactRepository from '../repositories/IContactRepository';
 
 interface IRequest {
   name: string;
-  email: string;
-  subject: string;
-  message: string;
+  content: string;
 }
 
 @injectable()
@@ -18,16 +16,12 @@ class CreateContactService {
   ) {}
 
   public async execute({
-    email,
-    message,
     name,
-    subject,
+    content,
   }: IRequest): Promise<Contact> {
     const file = await this.contactRepository.create({
-      email,
-      message,
       name,
-      subject,
+      content,
     });
 
     return file;

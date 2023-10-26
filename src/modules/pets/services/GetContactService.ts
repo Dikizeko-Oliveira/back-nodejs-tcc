@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppErrors';
 
-import Contact from '../infra/typeorm/entities/Contact';
+import Contact from '../infra/typeorm/entities/Pets';
 import IContactRepository from '../repositories/IContactRepository';
 import IUserRepository from '@modules/users/repositories/IUserRepository';
 
@@ -30,7 +30,7 @@ class GetContactsService {
     const file = await this.contactRepository.findAll();
 
     if (file.length === 0) {
-      throw new AppError('Contact data does not exists', 404);
+      throw new AppError('No pets were found', 404);
     }
 
     return file;

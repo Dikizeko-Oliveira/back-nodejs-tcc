@@ -18,9 +18,7 @@ export default class UserController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { password, email, name, address_city, address_uf, birthdate } =
-      request.body;
-    const { cellphone_number, password_confirmation, profession, description } =
+    const { password, email, name, password_confirmation } =
       request.body;
 
     const createUser = container.resolve(CreateUserService);
@@ -28,14 +26,8 @@ export default class UserController {
     const userCreated = await createUser.execute({
       email,
       password,
-      address_city,
-      address_uf,
-      birthdate,
-      cellphone_number,
       name,
       password_confirmation,
-      profession,
-      description,
     });
 
     return response.json(classToClass(userCreated));
@@ -53,14 +45,10 @@ export default class UserController {
     const userUpdated = await updateUser.execute({
       email,
       password,
-      address_city,
-      address_uf,
-      birthdate,
       cellphone_number,
       name,
       user_id,
       old_password,
-      profession,
     });
 
     return response.json(classToClass(userUpdated));

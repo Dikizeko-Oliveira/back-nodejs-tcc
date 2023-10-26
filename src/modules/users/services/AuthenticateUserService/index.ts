@@ -38,10 +38,6 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email or password combination.', 401);
     }
 
-    if (user.email_confirmed !== true) {
-      throw new AppError('Email not confirmed', 401);
-    }
-
     const passwordMatched = await this.hashProvider.compareHash(
       password,
       user.password,

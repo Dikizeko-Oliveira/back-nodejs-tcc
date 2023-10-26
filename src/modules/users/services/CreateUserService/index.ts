@@ -8,15 +8,9 @@ import User from '../../infra/typeorm/entities/User';
 
 interface IRequest {
   name: string;
-  birthdate: Date;
   email: string;
-  cellphone_number: string;
-  address_city: string;
-  address_uf: string;
-  profession: string;
   password: string;
   password_confirmation: string;
-  description?: string;
 }
 
 @injectable()
@@ -32,12 +26,6 @@ class CreateUserService {
   public async execute({
     name,
     email,
-    birthdate,
-    address_city,
-    cellphone_number,
-    address_uf,
-    profession,
-    description,
     password,
     password_confirmation,
   }: IRequest): Promise<User> {
@@ -56,12 +44,6 @@ class CreateUserService {
     const user = await this.usersRepository.create({
       name,
       email,
-      birthdate,
-      address_city,
-      address_uf,
-      cellphone_number,
-      profession,
-      description,
       password: hashedPassword,
     });
 

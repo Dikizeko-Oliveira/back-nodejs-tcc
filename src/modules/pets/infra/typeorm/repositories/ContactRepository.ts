@@ -1,9 +1,9 @@
 import { getRepository, Repository } from 'typeorm';
 
-import IContactRepository from '@modules/contacts/repositories/IContactRepository';
-import ICreateContactDTO from '@modules/contacts/dtos/ICreateContactDTO';
+import IContactRepository from '@modules/pets/repositories/IContactRepository';
+import ICreateContactDTO from '@modules/pets/dtos/ICreateContactDTO';
 
-import Contact from '../entities/Contact';
+import Contact from '../entities/Pets';
 
 class ContactRepository implements IContactRepository {
   private ormRepository: Repository<Contact>;
@@ -14,14 +14,14 @@ class ContactRepository implements IContactRepository {
 
   public async findAll(): Promise<Contact[]> {
     const file = await this.ormRepository.find({
-      order: { created_at: 'DESC' },
+      order: { name: 'ASC' },
     });
 
     return file;
   }
 
-  public async findById(id: string): Promise<Contact | undefined> {
-    const file = await this.ormRepository.findOne(id);
+  public async findById(id: string): Promise<Contact | null> {
+    const file = await this.ormRepository.findOne({where:{id}});
 
     return file;
   }

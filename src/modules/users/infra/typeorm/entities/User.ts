@@ -11,44 +11,29 @@ import uploadConfig from '@config/upload';
 @Entity('users')
 class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  email: string;
-
-  @Column()
-  email_confirmed: boolean;
+  email!: string;
 
   @Column()
   @Exclude()
-  password: string;
+  password!: string;
 
   @Column()
-  address_city: string;
+  cellphone_number?: string;
 
   @Column()
-  address_uf: string;
-
-  @Column()
-  cellphone_number: string;
-
-  @Column()
-  profession: string;
-
-  @Column()
-  birthdate: Date;
-
-  @Column()
-  avatar: string;
+  avatar?: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at!: Date;
 
   @Expose({ name: 'avatar_url' })
   getavatarUrl(): string | null {
