@@ -1,0 +1,33 @@
+<style>
+  .message-content {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .button {
+    text-decoration: none;
+    text-align: center;
+    background: darkgreen !important;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 200px;
+    height: 42px;
+  }
+</style>
+
+<div class="message-content">
+  <p>Olá {{name}}</p>
+  <p>Seja Bem-vindo à nossa Ong.</p>
+  <p>Só mais um passo para completar o seu cadastro.</p>
+  <p>Confirme o seu email para ter acesso a plataforma.</p>
+
+  <a class="button" href="https://www.example.com.br/{{url}}?token={{token}}">Confirmar</a>
+
+  <p>
+    Obrigado!<br>
+    <strong>Equipe Ong animais</strong>
+  </p>
+</div>
